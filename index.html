@@ -1,695 +1,655 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hundefra Nassir — Full-Stack & Game Developer</title>
+  <title>Hundefra Nassir — Professional Flutter Developer</title>
 
-  <!-- Tailwind CSS (CDN) -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Lucide Icons (CDN) -->
+  <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 
-  <meta name="description" content="Portfolio of Hundefra Nassir — Full-Stack & Game Developer specializing in Flutter, React Native, and scalable backends." />
+  <meta name="description"
+    content="Portfolio of Hundefra Nassir — A Professional Flutter Developer and Full-Stack Engineer building high-performance, scalable cross-platform applications." />
   <meta name="theme-color" content="#0a0e1a" />
-
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-    
-    html { scroll-behavior: smooth; }
-    body { 
-      font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      background: #0a0e1a;
-    }
-
-    /* Custom scrollbar */
-    ::-webkit-scrollbar { width: 10px; height: 10px; }
-    ::-webkit-scrollbar-track { background: #0a0e1a; }
-    ::-webkit-scrollbar-thumb { 
-      background: linear-gradient(180deg, #10b981, #059669);
-      border-radius: 10px;
-    }
-    ::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #059669, #047857); }
-
-    /* Animated gradient background */
-    @keyframes gradientShift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-    
-    .animated-bg {
-      background: linear-gradient(135deg, #0a0e1a 0%, #1a1f35 25%, #0f172a 50%, #1e293b 75%, #0a0e1a 100%);
-      background-size: 400% 400%;
-      animation: gradientShift 15s ease infinite;
-    }
-
-    /* Glassmorphism cards */
-    .glass-card {
-      background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
-    }
-
-    .glass-card:hover {
-      border-color: rgba(16,185,129,0.3);
-      box-shadow: 0 12px 48px rgba(16,185,129,0.15), inset 0 1px 0 rgba(255,255,255,0.15);
-    }
-
-    /* Gradient text */
-    .gradient-text {
-      background: linear-gradient(120deg, #10b981, #3b82f6, #8b5cf6);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: gradientShift 8s ease infinite;
-    }
-
-    /* Profile picture glow */
-    .profile-glow {
-      position: relative;
-      border-radius: 2rem;
-      overflow: visible;
-    }
-    
-    .profile-glow::before {
-      content: '';
-      position: absolute;
-      inset: -4px;
-      border-radius: 2rem;
-      padding: 4px;
-      background: linear-gradient(135deg, #10b981, #3b82f6, #8b5cf6, #ec4899);
-      background-size: 300% 300%;
-      animation: gradientShift 6s ease infinite;
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-    }
-
-    .profile-glow::after {
-      content: '';
-      position: absolute;
-      inset: -20px;
-      background: radial-gradient(circle, rgba(16,185,129,0.3), transparent 70%);
-      filter: blur(30px);
-      z-index: -1;
-      opacity: 0;
-      transition: opacity 0.5s;
-    }
-
-    .profile-glow:hover::after {
-      opacity: 1;
-    }
-
-    /* Floating animation */
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-    }
-
-    .floating {
-      animation: float 6s ease-in-out infinite;
-    }
-
-    /* Particle effects */
-    .particle {
-      position: absolute;
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    @keyframes particleFloat {
-      0% { transform: translateY(0) translateX(0); opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
-    }
-
-    /* Skill badge shimmer */
-    @keyframes shimmer {
-      0% { background-position: -200% center; }
-      100% { background-position: 200% center; }
-    }
-
-    .skill-badge {
-      background: linear-gradient(90deg, rgba(16,185,129,0.1) 0%, rgba(16,185,129,0.3) 50%, rgba(16,185,129,0.1) 100%);
-      background-size: 200% auto;
-      animation: shimmer 3s linear infinite;
-    }
-
-    /* Timeline dot pulse */
-    @keyframes pulse-ring {
-      0% { box-shadow: 0 0 0 0 rgba(16,185,129,0.7); }
-      100% { box-shadow: 0 0 0 15px rgba(16,185,129,0); }
-    }
-
-    .timeline-dot-animated {
-      animation: pulse-ring 2s ease-out infinite;
-    }
-
-    /* Button effects */
-    .btn-primary {
-      background: linear-gradient(135deg, #10b981, #059669);
-      box-shadow: 0 10px 30px rgba(16,185,129,0.3);
-      transition: all 0.3s ease;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 15px 40px rgba(16,185,129,0.4);
-    }
-
-    .btn-secondary {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255,255,255,0.1);
-      border-color: rgba(16,185,129,0.5);
-      transform: translateY(-2px);
-    }
-
-    /* Section reveal */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .reveal {
-      animation: fadeInUp 0.8s ease forwards;
-    }
-
-    /* Motion-reduction */
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
-      html { scroll-behavior: auto; }
-    }
-  </style>
 
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            'primary-dark': '#0a0e1a',
-            'secondary-dark': '#141827',
-            'accent': '#10b981',
-            'text-light': '#f9fafb',
-            'text-muted': '#9ca3af'
+            bg: '#02040a',
+            surface: '#0f172a',
+            flutter: '#4AC1FF', /* Flutter Light Blue */
+            flutterDark: '#04599C', /* Flutter Dark Blue */
+            accent: '#10b981',
+            textLight: '#f8fafc',
+            textGray: '#94a3b8'
+          },
+          animation: {
+            'blob': 'blob 10s infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'shimmer': 'shimmer 2.5s linear infinite',
+          },
+          keyframes: {
+            blob: {
+              '0%': { transform: 'translate(0px, 0px) scale(1)' },
+              '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+              '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+              '100%': { transform: 'translate(0px, 0px) scale(1)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-20px)' },
+            },
+            shimmer: {
+              '0%': { backgroundPosition: '-1000px 0' },
+              '100%': { backgroundPosition: '1000px 0' }
+            }
           }
         }
       }
     };
-
-    async function copyToClipboard(text) {
-      try {
-        if (navigator.clipboard && window.isSecureContext) {
-          await navigator.clipboard.writeText(text);
-        } else {
-          const ta = document.createElement('textarea');
-          ta.value = text;
-          ta.style.position = 'fixed';
-          ta.style.opacity = '0';
-          document.body.appendChild(ta);
-          ta.focus();
-          ta.select();
-          document.execCommand('copy');
-          document.body.removeChild(ta);
-        }
-        showFeedback('✓ Copied to clipboard');
-      } catch (e) {
-        showFeedback('✗ Copy failed');
-      }
-    }
-
-    function showFeedback(message) {
-      const el = document.getElementById('feedback-message');
-      if (!el) return;
-      el.textContent = message;
-      el.classList.remove('opacity-0', 'translate-y-2', 'pointer-events-none');
-      el.classList.add('opacity-100', 'translate-y-0');
-
-      window.clearTimeout(el._timeout);
-      el._timeout = window.setTimeout(() => {
-        el.classList.add('opacity-0', 'translate-y-2', 'pointer-events-none');
-        el.classList.remove('opacity-100', 'translate-y-0');
-      }, 2000);
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-      if (window.lucide && lucide.createIcons) lucide.createIcons();
-
-      const menuButton = document.getElementById('menu-button');
-      const mobileMenu = document.getElementById('mobile-menu');
-      if (menuButton && mobileMenu) {
-        const toggleMenu = () => {
-          const willOpen = mobileMenu.classList.contains('hidden');
-          mobileMenu.classList.toggle('hidden');
-          menuButton.setAttribute('aria-expanded', String(willOpen));
-        };
-        menuButton.addEventListener('click', toggleMenu);
-      }
-
-      // Create floating particles
-      createParticles();
-      
-      // Intersection observer for reveal animations
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('reveal');
-          }
-        });
-      }, { threshold: 0.1 });
-
-      document.querySelectorAll('.observe').forEach(el => observer.observe(el));
-    });
-
-    function createParticles() {
-      const container = document.getElementById('particles-container');
-      if (!container) return;
-      
-      for (let i = 0; i < 30; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.width = (Math.random() * 4 + 2) + 'px';
-        particle.style.height = particle.style.width;
-        particle.style.background = `rgba(16,185,129,${Math.random() * 0.5 + 0.2})`;
-        particle.style.animation = `particleFloat ${Math.random() * 15 + 10}s linear infinite`;
-        particle.style.animationDelay = Math.random() * 5 + 's';
-        container.appendChild(particle);
-      }
-    }
   </script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #02040a;
+      overflow-x: hidden;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #02040a;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #475569;
+    }
+
+    /* Tech Grid Background */
+    .bg-grid {
+      background-size: 50px 50px;
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+    }
+
+    /* Premium Glassmorphism */
+    .glass {
+      background: rgba(15, 23, 42, 0.3);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .glass-hover {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .glass-hover:hover {
+      background: rgba(15, 23, 42, 0.5);
+      border-color: rgba(74, 193, 255, 0.3);
+      /* Flutter Blue tint on hover */
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -10px rgba(74, 193, 255, 0.1);
+    }
+
+    /* Text Gradient */
+    .text-gradient {
+      background: linear-gradient(135deg, #4AC1FF 0%, #ffffff 50%, #10b981 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% auto;
+      animation: gradientShift 8s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* Flutter Badge Glow */
+    .flutter-glow {
+      box-shadow: 0 0 15px rgba(74, 193, 255, 0.3);
+      border-color: rgba(74, 193, 255, 0.5);
+    }
+
+    /* Reveal Animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 
-<body class="animated-bg text-text-light min-h-screen selection:bg-accent/30 selection:text-text-light">
-  <!-- Particles Background -->
-  <div id="particles-container" class="fixed inset-0 -z-10 pointer-events-none overflow-hidden"></div>
+<body class="text-textLight antialiased selection:bg-flutter/30 selection:text-white">
 
-  <!-- Background decorative gradient blobs -->
-  <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10">
-    <div class="absolute top-0 right-1/4 w-96 h-96 rounded-full blur-3xl opacity-20" style="background: radial-gradient(circle, #10b981, transparent 70%);"></div>
-    <div class="absolute bottom-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl opacity-20" style="background: radial-gradient(circle, #3b82f6, transparent 70%);"></div>
-    <div class="absolute top-1/3 right-1/3 w-72 h-72 rounded-full blur-3xl opacity-10" style="background: radial-gradient(circle, #8b5cf6, transparent 70%);"></div>
+  <!-- Background Elements -->
+  <div class="fixed inset-0 z-0 pointer-events-none">
+    <div class="absolute inset-0 bg-grid"></div>
+    <!-- Ambient Blobs -->
+    <div
+      class="absolute top-0 -left-4 w-96 h-96 bg-flutter/20 rounded-full mix-blend-screen filter blur-[100px] opacity-30 animate-blob">
+    </div>
+    <div
+      class="absolute top-0 -right-4 w-96 h-96 bg-accent/20 rounded-full mix-blend-screen filter blur-[100px] opacity-30 animate-blob animation-delay-2000">
+    </div>
+    <div
+      class="absolute -bottom-32 left-20 w-96 h-96 bg-purple-500/20 rounded-full mix-blend-screen filter blur-[100px] opacity-30 animate-blob animation-delay-4000">
+    </div>
   </div>
 
-  <!-- Feedback Toast -->
-  <div id="feedback-message" class="fixed top-5 right-5 glass-card text-text-light px-6 py-3 rounded-2xl shadow-lg transition-all duration-300 opacity-0 translate-y-2 pointer-events-none z-50 font-semibold backdrop-blur-xl border-accent/50">
-    Copied!
-  </div>
-
-  <!-- Header -->
-  <header class="sticky top-0 z-40 glass-card border-b border-white/5">
+  <!-- Navbar -->
+  <nav class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20">
-        <a href="#hero" class="text-2xl sm:text-3xl font-black gradient-text tracking-tight focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-lg px-2">
-          HN
+      <div class="flex items-center justify-between h-20 glass mt-4 rounded-2xl px-6">
+        <!-- Logo -->
+        <a href="#"
+          class="text-2xl font-bold tracking-tighter hover:text-flutter transition-colors flex items-center gap-2">
+          <div
+            class="w-8 h-8 rounded-lg bg-gradient-to-br from-flutter to-accent flex items-center justify-center text-white text-sm font-black">
+            HN</div>
+          <span>Hundefra<span class="text-flutter">.</span></span>
         </a>
 
-        <!-- Desktop nav -->
-        <nav class="hidden md:flex items-center gap-1" aria-label="Primary">
-          <a href="#skills" class="text-text-light/80 hover:text-accent transition font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-xl px-4 py-2 hover:bg-white/5">Skills</a>
-          <a href="#experience" class="text-text-light/80 hover:text-accent transition font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-xl px-4 py-2 hover:bg-white/5">Experience</a>
-          <a href="#projects" class="text-text-light/80 hover:text-accent transition font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-xl px-4 py-2 hover:bg-white/5">Projects</a>
-          <a href="#contact" class="ml-2 btn-primary text-white font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-xl px-5 py-2.5">Contact</a>
-        </nav>
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#about" class="text-sm font-medium text-textGray hover:text-white transition-colors">About</a>
+          <a href="#skills" class="text-sm font-medium text-textGray hover:text-white transition-colors">Skills</a>
+          <a href="#experience"
+            class="text-sm font-medium text-textGray hover:text-white transition-colors">Experience</a>
+          <a href="#projects" class="text-sm font-medium text-textGray hover:text-white transition-colors">Projects</a>
+          <a href="#contact"
+            class="px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:bg-flutter hover:border-flutter hover:text-bg font-semibold transition-all duration-300">
+            Let's Talk
+          </a>
+        </div>
 
-        <!-- Mobile menu button -->
-        <button id="menu-button" type="button" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle navigation" class="md:hidden p-2.5 rounded-xl text-text-light hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent transition">
-          <i data-lucide="menu" class="w-6 h-6" aria-hidden="true"></i>
+        <!-- Mobile Menu Toggle -->
+        <button id="menu-btn" class="md:hidden text-white p-2">
+          <i data-lucide="menu" class="w-6 h-6"></i>
         </button>
       </div>
     </div>
 
-    <!-- Mobile menu -->
-    <div id="mobile-menu" class="md:hidden hidden border-t border-white/5 glass-card">
-      <nav class="px-4 py-4 flex flex-col gap-2" aria-label="Mobile">
-        <a href="#skills" class="rounded-xl px-4 py-3 text-text-light/90 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent font-medium transition" onclick="document.getElementById('mobile-menu').classList.add('hidden');document.getElementById('menu-button').setAttribute('aria-expanded','false')">Skills</a>
-        <a href="#experience" class="rounded-xl px-4 py-3 text-text-light/90 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent font-medium transition" onclick="document.getElementById('mobile-menu').classList.add('hidden');document.getElementById('menu-button').setAttribute('aria-expanded','false')">Experience</a>
-        <a href="#projects" class="rounded-xl px-4 py-3 text-text-light/90 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent font-medium transition" onclick="document.getElementById('mobile-menu').classList.add('hidden');document.getElementById('menu-button').setAttribute('aria-expanded','false')">Projects</a>
-        <a href="#contact" class="rounded-xl px-4 py-3 btn-primary text-white text-center font-semibold transition" onclick="document.getElementById('mobile-menu').classList.add('hidden');document.getElementById('menu-button').setAttribute('aria-expanded','false')">Contact</a>
-      </nav>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+      class="hidden md:hidden absolute top-24 left-4 right-4 glass rounded-2xl p-4 flex flex-col gap-4">
+      <a href="#about" class="p-3 hover:bg-white/5 rounded-lg" onclick="toggleMenu()">About</a>
+      <a href="#skills" class="p-3 hover:bg-white/5 rounded-lg" onclick="toggleMenu()">Skills</a>
+      <a href="#projects" class="p-3 hover:bg-white/5 rounded-lg" onclick="toggleMenu()">Projects</a>
+      <a href="#contact" class="p-3 bg-flutter/20 text-flutter font-bold text-center rounded-lg"
+        onclick="toggleMenu()">Contact Me</a>
     </div>
-  </header>
+  </nav>
 
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <!-- Hero -->
-    <section id="hero" class="py-16 md:py-28 observe">
-      <div class="grid md:grid-cols-2 gap-16 items-center">
-        <div class="text-center md:text-left space-y-6">
-          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm font-medium text-accent border-accent/30">
-            <span class="relative flex h-2 w-2">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+  <!-- Hero Section -->
+  <main class="relative z-10 pt-32 pb-20 lg:pt-48 lg:pb-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" class="grid lg:grid-cols-2 gap-12 items-center reveal active">
+      <div class="space-y-8 text-center lg:text-left">
+        <div
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-flutter/30 bg-flutter/10 text-flutter text-xs font-bold tracking-wide uppercase">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-flutter opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-flutter"></span>
+          </span>
+          Professional Flutter Developer
+        </div>
+
+        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
+          Building <br />
+          <span class="text-gradient">Digital Experiences</span> <br />
+          That Matter.
+        </h1>
+
+        <p class="text-lg text-textGray max-w-xl mx-auto lg:mx-0 leading-relaxed">
+          I'm <strong class="text-white">Hundefra Nassir</strong>, a specialist in <strong class="text-flutter">Flutter
+            Development</strong> and scalable backend architecture. I transform complex ideas into silky-smooth,
+          cross-platform mobile applications.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <a href="#projects" class="group relative px-8 py-4 rounded-xl bg-white text-bg font-bold overflow-hidden">
+            <div
+              class="absolute inset-0 w-full h-full bg-gradient-to-r from-flutter to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            </div>
+            <span class="relative z-10 group-hover:text-white transition-colors flex items-center gap-2">
+              View Work <i data-lucide="arrow-right" class="w-4 h-4"></i>
             </span>
-            Available for opportunities
-          </div>
-          
-          <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black leading-tight">
-            Hi, I'm <span class="gradient-text">Hundefra</span>
-          </h1>
-          
-          <p class="text-xl sm:text-2xl font-semibold text-text-light/90">
-            Full-Stack & Game Developer
-          </p>
-          
-          <p class="text-lg text-text-muted max-w-xl mx-auto md:mx-0 leading-relaxed">
-            Building scalable cross-platform applications and immersive gaming experiences with Flutter, React Native, and powerful backend architectures.
-          </p>
-          
-          <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4">
-            <a href="#projects" class="inline-flex items-center justify-center btn-primary text-white font-bold py-4 px-8 rounded-2xl group">
-              Explore My Work
-              <i data-lucide="arrow-right" class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true"></i>
-            </a>
-            <a href="#contact" class="inline-flex items-center justify-center btn-secondary text-text-light font-bold py-4 px-8 rounded-2xl">
-              <i data-lucide="mail" class="w-5 h-5 mr-2" aria-hidden="true"></i>
-              Get In Touch
-            </a>
-          </div>
-        </div>
-
-        <div class="flex justify-center md:justify-end">
-          <div class="profile-glow relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 floating">
-            <div class="absolute inset-0 rounded-3xl overflow-hidden shadow-2xl">
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/zamar-app-project.appspot.com/o/Reports%2Fpp.png?alt=media&token=8ff45c36-86a9-4cd6-93aa-8de103918c9f"
-                alt="Portrait of Hundefra Nassir"
-                class="w-full h-full object-cover transition duration-700 hover:scale-110"
-                loading="lazy"
-                onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22720%22 height=%22720%22%3E%3Crect width=%22100%25%22 height=%22100%25%22 fill=%22%23141827%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%2310b981%22 font-size=%2248%22 font-weight=%22bold%22%3EHN%3C/text%3E%3C/svg%3E';"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills" class="py-20 md:py-32 observe">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl sm:text-5xl font-black mb-4 gradient-text">Technical Arsenal</h2>
-        <p class="text-xl text-text-muted">Technologies I leverage to build exceptional products</p>
-      </div>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Mobile Development -->
-        <article class="glass-card rounded-3xl p-8 hover:scale-105 transition-all duration-300 group">
-          <div class="flex items-center gap-4 mb-6">
-            <div class="p-4 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5 group-hover:from-accent/30 group-hover:to-accent/10 transition">
-              <i data-lucide="smartphone" class="w-8 h-8 text-accent" aria-hidden="true"></i>
-            </div>
-            <h3 class="text-2xl font-bold">Mobile Dev</h3>
-          </div>
-          <p class="text-text-muted mb-6 leading-relaxed">
-            Crafting pixel-perfect, high-performance cross-platform applications.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span class="skill-badge px-4 py-2 rounded-xl text-sm font-semibold border border-accent/20">Flutter</span>
-            <span class="skill-badge px-4 py-2 rounded-xl text-sm font-semibold border border-accent/20">React Native</span>
-            <span class="skill-badge px-4 py-2 rounded-xl text-sm font-semibold border border-accent/20">Dart</span>
-            <span class="skill-badge px-4 py-2 rounded-xl text-sm font-semibold border border-accent/20">Expo</span>
-          </div>
-        </article>
-
-        <!-- Backend -->
-        <article class="glass-card rounded-3xl p-8 hover:scale-105 transition-all duration-300 group">
-          <div class="flex items-center gap-4 mb-6">
-            <div class="p-4 rounded-2xl bg-gradient-to-br from-blue-500/20 to-blue-500/5 group-hover:from-blue-500/30 group-hover:to-blue-500/10 transition">
-              <i data-lucide="server" class="w-8 h-8 text-blue-400" aria-hidden="true"></i>
-            </div>
-            <h3 class="text-2xl font-bold">Backend</h3>
-          </div>
-          <p class="text-text-muted mb-6 leading-relaxed">
-            Architecting robust, scalable server-side solutions.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span class="skill-badge px-4 py-2 rounded-xl text-sm font-semibold border border-blue-400/20">Node.js</span>
-            <span class="skill-badge px-4 py-2 rounded-xl text-sm font-semibold border border-blue-400/20">Python</span>
-            <span class="skill-badge px-4 py-2 rounded-xl text-sm font-semibold border border-blue-400/20">Express</span>
-            <span class="skill-badge px-4 py-2 rounded-xl text-sm font-semibold border border-blue-400/20">Django</span>
-          </div>
-        </article>
-
-        <!-- Game Dev -->
-        <article class="glass-card rounded-3xl p-8 hover:scale-105 transition-all duration-300 group">
-          <div class="flex items-center gap-4 mb-6">
-            <div class="p-4 rounded-2xl bg-gradient-to-br from-purple-500/20 to-purple-500/5 group-hover:from-purple-500/30 group-hover:to-purple-500/10 transition">
-              <i data-lucide="gamepad-2" class="w-8 h-8 text-purple-400" aria-hidden="true"></i>
-            </div>
-            <h3 class="text-2xl font-bold">Game Dev</h3>
-          </div>
-          <p class="text-text-muted mb-6 leading-relaxed">
-            Creating immersive 2D/3D gaming experiences.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span class="skill-badge px-4 py-2 rounded-xl text-sm font-semibold border border-purple-400/20">Flame Engine</span>
-            <span class="skill-badge px-4 py-2 rounded-xl text-sm font-semibold border border-purple-400/20">Three.js</span>
-            <span class="skill-badge px-4 py-2 rounded-xl text-sm font-semibold border border-purple-400/20">Canvas API</span>
-          </div>
-        </article>
-      </div>
-
-      <div class="mt-16 text-center">
-        <a href="Hundefra Nassir - Developer Resume.jpg" target="_blank" rel="noopener" class="inline-flex items-center gap-3 btn-secondary font-bold py-4 px-8 rounded-2xl group">
-          <i data-lucide="file-text" class="w-5 h-5 group-hover:rotate-12 transition-transform" aria-hidden="true"></i>
-          Download Full Resume
-        </a>
-      </div>
-    </section>
-
-    <!-- Experience -->
-    <section id="experience" class="py-20 md:py-32 observe">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl sm:text-5xl font-black mb-4 gradient-text">Career Journey</h2>
-        <p class="text-xl text-text-muted">Professional milestones and achievements</p>
-      </div>
-
-      <div class="space-y-12 max-w-4xl mx-auto">
-        <!-- Item 1 -->
-        <article class="glass-card rounded-3xl p-8 hover:scale-[1.02] transition-all duration-300 border-l-4 border-accent">
-          <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-            <div>
-              <h3 class="text-2xl font-bold mb-2">Lead Mobile Developer</h3>
-              <p class="text-accent font-semibold">App Success Global</p>
-            </div>
-            <div class="flex items-center gap-2 text-text-muted mt-2 md:mt-0">
-              <i data-lucide="calendar" class="w-4 h-4" aria-hidden="true"></i>
-              <span class="text-sm font-medium">Jan 2022 - Present</span>
-            </div>
-          </div>
-          <ul class="space-y-3 text-text-muted">
-            <li class="flex items-start gap-3">
-              <i data-lucide="check-circle" class="w-5 h-5 text-accent mt-0.5 flex-shrink-0" aria-hidden="true"></i>
-              <span>Orchestrated iOS/Android deployments achieving 99.9% uptime with zero-downtime release strategies</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <i data-lucide="check-circle" class="w-5 h-5 text-accent mt-0.5 flex-shrink-0" aria-hidden="true"></i>
-              <span>Engineered Node.js/Express backend infrastructure handling 10,000+ requests per minute</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <i data-lucide="check-circle" class="w-5 h-5 text-accent mt-0.5 flex-shrink-0" aria-hidden="true"></i>
-              <span>Mentored team of 5 junior developers on state management patterns and clean architecture</span>
-            </li>
-          </ul>
-        </article>
-
-        <!-- Item 2 -->
-        <article class="glass-card rounded-3xl p-8 hover:scale-[1.02] transition-all duration-300 border-l-4 border-blue-400">
-          <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-            <div>
-              <h3 class="text-2xl font-bold mb-2">Full-Stack Engineer & Game Programmer</h3>
-              <p class="text-blue-400 font-semibold">Innovate Tech Labs</p>
-            </div>
-            <div class="flex items-center gap-2 text-text-muted mt-2 md:mt-0">
-              <i data-lucide="calendar" class="w-4 h-4" aria-hidden="true"></i>
-              <span class="text-sm font-medium">Jul 2019 - Dec 2021</span>
-            </div>
-          </div>
-          <ul class="space-y-3 text-text-muted">
-            <li class="flex items-start gap-3">
-              <i data-lucide="check-circle" class="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" aria-hidden="true"></i>
-              <span>Architected location-based social networking platform using React Native and Firebase</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <i data-lucide="check-circle" class="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" aria-hidden="true"></i>
-              <span>Developed 4 successful casual 2D games using JavaScript/Canvas and Flutter/Flame Engine</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <i data-lucide="check-circle" class="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" aria-hidden="true"></i>
-              <span>Implemented real-time analytics APIs with Python/Django for data-driven insights</span>
-            </li>
-          </ul>
-        </article>
-
-        <!-- Item 3 -->
-        <article class="glass-card rounded-3xl p-8 hover:scale-[1.02] transition-all duration-300 border-l-4 border-purple-400">
-          <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-            <div>
-              <h3 class="text-2xl font-bold mb-2">Database Systems Developer</h3>
-              <p class="text-purple-400 font-semibold">Various Local Clients</p>
-            </div>
-            <div class="flex items-center gap-2 text-text-muted mt-2 md:mt-0">
-              <i data-lucide="calendar" class="w-4 h-4" aria-hidden="true"></i>
-              <span class="text-sm font-medium">2018 - 2020</span>
-            </div>
-          </div>
-          <ul class="space-y-3 text-text-muted">
-            <li class="flex items-start gap-3">
-              <i data-lucide="check-circle" class="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" aria-hidden="true"></i>
-              <span>Designed and deployed PostgreSQL-based dental clinic management system</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <i data-lucide="check-circle" class="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" aria-hidden="true"></i>
-              <span>Developed HIPAA-compliant hospital patient management platform with advanced security</span>
-            </li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="py-20 md:py-32 observe">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl sm:text-5xl font-black mb-4 gradient-text">Featured Projects</h2>
-        <p class="text-xl text-text-muted">Showcasing innovation through code</p>
-      </div>
-
-      <div class="grid sm:grid-cols-2 gap-8">
-        <!-- Project 1: Enterprise Clinic -->
-        <article class="glass-card rounded-3xl overflow-hidden hover:scale-105 transition-all duration-300 group flex flex-col">
-          <div class="relative h-56 bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            <i data-lucide="database" class="w-20 h-20 text-accent/60 group-hover:scale-110 transition-transform" aria-hidden="true"></i>
-          </div>
-          <div class="p-6 flex flex-col gap-4 flex-1">
-            <h3 class="text-xl lg:text-2xl font-bold">Enterprise Clinic Management System</h3>
-            <p class="text-text-muted flex-1 leading-relaxed">
-              Designed and deployed a full-stack Clinic Database System focusing on HIPAA/Data Compliance, role-based authentication, and real-time sync. Resulted in a single source of truth for patient data, streamlining clinic operations.
-            </p>
-            <div class="flex flex-wrap gap-2 mt-auto pt-4">
-              <span class="px-3 py-1.5 rounded-lg text-xs font-bold bg-accent/20 text-accent border border-accent/30">Flutter</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-bold bg-accent/20 text-accent border border-accent/30">Node.js</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-bold bg-accent/20 text-accent border border-accent/30">PostgreSQL</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 2: Church Management -->
-        <article class="glass-card rounded-3xl overflow-hidden hover:scale-105 transition-all duration-300 group flex flex-col">
-          <div class="relative h-56 bg-gradient-to-br from-purple-500/20 to-purple-500/5 flex items-center justify-center overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            <i data-lucide="users" class="w-20 h-20 text-purple-400/60 group-hover:scale-110 transition-transform" aria-hidden="true"></i>
-          </div>
-          <div class="p-6 flex flex-col gap-4 flex-1">
-            <h3 class="text-xl lg:text-2xl font-bold">Collaborative Church Management Platform</h3>
-            <p class="text-text-muted flex-1 leading-relaxed">
-              Developed the entire Flutter Frontend Architecture for a complex Church Management Platform, specializing in custom UI/UX, state management, and seamless integration with an external Next.js backend.
-            </p>
-            <div class="flex flex-wrap gap-2 mt-auto pt-4">
-              <span class="px-3 py-1.5 rounded-lg text-xs font-bold bg-purple-500/20 text-purple-400 border border-purple-400/30">Flutter</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-bold bg-purple-500/20 text-purple-400 border border-purple-400/30">Next.js API</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-bold bg-purple-500/20 text-purple-400 border border-purple-400/30">UI/UX</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 3: Tena Smile Clinic -->
-        <article class="glass-card rounded-3xl overflow-hidden hover:scale-105 transition-all duration-300 group flex flex-col">
-          <div class="relative h-56 bg-gradient-to-br from-blue-500/20 to-blue-500/5 flex items-center justify-center overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            <i data-lucide="shield-check" class="w-20 h-20 text-blue-400/60 group-hover:scale-110 transition-transform" aria-hidden="true"></i>
-          </div>
-          <div class="p-6 flex flex-col gap-4 flex-1">
-            <h3 class="text-xl lg:text-2xl font-bold">Tena Smile Clinic Management System</h3>
-            <p class="text-text-muted flex-1 leading-relaxed">
-              Deployed a full-stack clinic system with a heavy focus on HIPAA/Data Compliance. Implemented secure, role-based authentication and complex data models to provide a single source of truth and boost staff efficiency.
-            </p>
-            <div class="flex flex-wrap gap-2 mt-auto pt-4">
-              <span class="px-3 py-1.5 rounded-lg text-xs font-bold bg-blue-500/20 text-blue-400 border border-blue-400/30">Flutter</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-bold bg-blue-500/20 text-blue-400 border border-blue-400/30">Next.js</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-bold bg-blue-500/20 text-blue-400 border border-blue-400/30">PostgreSQL</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-bold bg-blue-500/20 text-blue-400 border border-blue-400/30">HIPAA</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 4: Addis Hiwot Hospital -->
-        <article class="glass-card rounded-3xl overflow-hidden hover:scale-105 transition-all duration-300 group flex flex-col">
-          <div class="relative h-56 bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            <i data-lucide="stethoscope" class="w-20 h-20 text-accent/60 group-hover:scale-110 transition-transform" aria-hidden="true"></i>
-          </div>
-          <div class="p-6 flex flex-col gap-4 flex-1">
-            <h3 class="text-xl lg:text-2xl font-bold">Addis Hiwot Hospital Patient Portal & Website</h3>
-            <p class="text-text-muted flex-1 leading-relaxed">
-              Engineered the patient-facing digital platform for a major hospital using React Native and a secure Node.js backend. Implemented core features like appointment booking and doctor search to streamline patient scheduling.
-            </p>
-            <div class="flex flex-wrap gap-2 mt-auto pt-4">
-              <span class="px-3 py-1.5 rounded-lg text-xs font-bold bg-accent/20 text-accent border border-accent/30">React Native</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-bold bg-accent/20 text-accent border border-accent/30">Node.js</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-bold bg-accent/20 text-accent border border-accent/30">Patient Portal</span>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="py-20 md:py-32 observe">
-      <div class="glass-card rounded-3xl p-12 max-w-4xl mx-auto text-center border-2 border-accent/20">
-        <div class="mb-8">
-          <h2 class="text-4xl sm:text-5xl font-black mb-4 gradient-text">Let's Create Together</h2>
-          <p class="text-xl text-text-muted leading-relaxed max-w-2xl mx-auto">
-            Ready to bring your vision to life? I'm actively seeking opportunities to architect innovative solutions and lead transformative projects.
-          </p>
-        </div>
-
-        <div class="flex flex-col sm:flex-row justify-center gap-4 mb-8">
-          <button type="button" onclick="copyToClipboard('hundefra@gmail.com')" class="flex items-center justify-center btn-secondary font-bold py-4 px-8 rounded-2xl group">
-            <i data-lucide="mail" class="w-5 h-5 mr-3 group-hover:rotate-12 transition-transform" aria-hidden="true"></i>
-            hundefra@gmail.com
-          </button>
-          
-          <a href="https://linkedin.com/in/hundefra-nassir" target="_blank" rel="noopener" class="flex items-center justify-center font-bold py-4 px-8 rounded-2xl group transition-all duration-300" style="background: linear-gradient(135deg, #0A66C2, #004182); box-shadow: 0 10px 30px rgba(10,102,194,0.3);">
-            <i data-lucide="linkedin" class="w-5 h-5 mr-3 group-hover:rotate-12 transition-transform" aria-hidden="true"></i>
-            LinkedIn
+          </a>
+          <a href="Hundefra Nassir - Developer Resume.jpg" target="_blank"
+            class="px-8 py-4 rounded-xl glass hover:bg-white/10 border border-white/10 font-bold transition-all flex items-center justify-center gap-2">
+            <i data-lucide="download" class="w-4 h-4"></i> Resume
           </a>
         </div>
 
-        <div class="flex items-center justify-center gap-2 text-lg">
-          <i data-lucide="phone" class="w-5 h-5 text-accent" aria-hidden="true"></i>
-          <a class="text-text-light hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-lg px-2 py-1 font-semibold transition" href="tel:+251925526298">+251 9 2552 6298</a>
+        <!-- Tech Stack Logos (Mini) -->
+        <div
+          class="pt-6 flex items-center justify-center lg:justify-start gap-6 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+          <span class="text-xs font-semibold text-textGray uppercase tracking-widest">Stack:</span>
+          <!-- Simplified visual representation -->
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" class="h-6 w-6"
+            alt="Flutter" title="Flutter" />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg" class="h-6 w-6"
+            alt="Dart" />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="h-6 w-6"
+            alt="React Native" />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" class="h-6 w-6"
+            alt="Node" />
+        </div>
+      </div>
+
+      <!-- Hero Image -->
+      <div class="relative lg:h-[600px] flex items-center justify-center">
+        <div class="relative w-72 h-72 sm:w-96 sm:h-96 md:w-[450px] md:h-[450px] animate-float">
+          <!-- Decorative Rings -->
+          <div class="absolute inset-0 rounded-full border border-flutter/20 scale-110"></div>
+          <div
+            class="absolute inset-0 rounded-full border border-white/5 scale-125 border-dashed animate-[spin_20s_linear_infinite]">
+          </div>
+
+          <!-- Image Container -->
+          <div class="absolute inset-0 rounded-full overflow-hidden border-2 border-white/10 shadow-2xl bg-surface">
+            <div class="absolute inset-0 bg-gradient-to-tr from-flutter/20 to-transparent z-10 mix-blend-overlay"></div>
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/zamar-app-project.appspot.com/o/Reports%2Fpp.png?alt=media&token=8ff45c36-86a9-4cd6-93aa-8de103918c9f"
+              alt="Hundefra Nassir"
+              class="w-full h-full object-cover scale-105 hover:scale-110 transition-transform duration-700"
+              onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiBmaWxsPSIjMGYxNzJhIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIvPjwvc3ZnPg==';" />
+          </div>
+
+          <!-- Floating Badge -->
+          <div
+            class="absolute bottom-10 -left-4 z-20 glass px-4 py-3 rounded-xl flex items-center gap-3 animate-[float_4s_ease-in-out_infinite] animation-delay-1000">
+            <div class="bg-green-500/20 p-2 rounded-lg text-green-400">
+              <i data-lucide="code-2" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <p class="text-xs text-textGray">Experience</p>
+              <p class="text-sm font-bold text-white">5+ Years</p>
+            </div>
+          </div>
+
+          <div
+            class="absolute top-10 -right-4 z-20 glass px-4 py-3 rounded-xl flex items-center gap-3 animate-[float_5s_ease-in-out_infinite]">
+            <div class="bg-flutter/20 p-2 rounded-lg text-flutter">
+              <i data-lucide="smartphone" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <p class="text-xs text-textGray">Focus</p>
+              <p class="text-sm font-bold text-white">Mobile Expert</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 reveal">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+        <div>
+          <h2 class="text-3xl md:text-5xl font-bold mb-4">Technical <span class="text-flutter">Arsenal</span></h2>
+          <p class="text-textGray text-lg max-w-xl">Tools I use to craft high-performance applications.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Mobile Card -->
+        <div class="glass glass-hover p-8 rounded-3xl group relative overflow-hidden">
+          <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+            <i data-lucide="smartphone" class="w-24 h-24"></i>
+          </div>
+          <div class="w-12 h-12 rounded-xl bg-flutter/20 text-flutter flex items-center justify-center mb-6">
+            <i data-lucide="smartphone" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Mobile Development</h3>
+          <p class="text-textGray mb-6 text-sm leading-relaxed">Expertise in building pixel-perfect, native-feel
+            applications.</p>
+          <div class="flex flex-wrap gap-2">
+            <!-- Highlighted Flutter Badge -->
+            <span
+              class="px-3 py-1 rounded-lg bg-flutter text-bg text-xs font-bold border border-flutter shadow-[0_0_10px_rgba(74,193,255,0.4)]">Flutter</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-medium">Dart</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-medium">React Native</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-medium">Expo</span>
+          </div>
+        </div>
+
+        <!-- Backend Card -->
+        <div class="glass glass-hover p-8 rounded-3xl group relative overflow-hidden">
+          <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+            <i data-lucide="server" class="w-24 h-24"></i>
+          </div>
+          <div class="w-12 h-12 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center mb-6">
+            <i data-lucide="server" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Backend & Cloud</h3>
+          <p class="text-textGray mb-6 text-sm leading-relaxed">Architecting robust, scalable server-side solutions.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-medium">Node.js</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-medium">Python /
+              Django</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-medium">PostgreSQL</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-medium">Firebase</span>
+          </div>
+        </div>
+
+        <!-- Game Dev Card -->
+        <div class="glass glass-hover p-8 rounded-3xl group relative overflow-hidden">
+          <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+            <i data-lucide="gamepad-2" class="w-24 h-24"></i>
+          </div>
+          <div class="w-12 h-12 rounded-xl bg-accent/20 text-accent flex items-center justify-center mb-6">
+            <i data-lucide="gamepad-2" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Game Development</h3>
+          <p class="text-textGray mb-6 text-sm leading-relaxed">Creating immersive 2D/3D interactive experiences.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-medium">Flame Engine</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-medium">Three.js</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-medium">Canvas API</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Timeline -->
+    <section id="experience" class="py-24 reveal">
+      <h2 class="text-3xl md:text-5xl font-bold mb-16 text-center">Professional <span
+          class="text-gradient">Journey</span></h2>
+
+      <div class="relative max-w-3xl mx-auto space-y-12">
+        <!-- Vertical Line -->
+        <div
+          class="absolute left-0 md:left-1/2 h-full w-px bg-gradient-to-b from-flutter via-accent to-transparent transform -translate-x-1/2 hidden md:block">
+        </div>
+
+        <!-- Item 1 -->
+        <div class="relative flex flex-col md:flex-row items-center justify-between group">
+          <div
+            class="md:w-5/12 text-left md:text-right order-2 md:order-1 glass p-6 rounded-2xl w-full hover:border-flutter/50 transition-colors">
+            <h3 class="text-xl font-bold text-white">Lead Mobile Developer</h3>
+            <p class="text-flutter text-sm font-semibold mb-2">App Success Global</p>
+            <p class="text-textGray text-sm">Orchestrated iOS/Android deployments (99.9% uptime). Mentored junior devs
+              on clean architecture and state management.</p>
+          </div>
+          <div
+            class="absolute left-0 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-bg border-4 border-flutter rounded-full z-10 hidden md:block shadow-[0_0_10px_#4AC1FF]">
+          </div>
+          <div class="md:w-5/12 order-1 md:order-2 text-left pl-8 md:pl-0 mb-2 md:mb-0">
+            <span class="text-2xl font-black text-white/10 group-hover:text-flutter/20 transition-colors">2022 -
+              Present</span>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="relative flex flex-col md:flex-row items-center justify-between group">
+          <div class="md:w-5/12 text-right order-2 md:order-1 pr-8 md:pr-0 mb-2 md:mb-0 hidden md:block">
+            <span class="text-2xl font-black text-white/10 group-hover:text-purple-400/20 transition-colors">2019 -
+              2021</span>
+          </div>
+          <div
+            class="absolute left-0 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-bg border-4 border-purple-500 rounded-full z-10 hidden md:block">
+          </div>
+          <div
+            class="md:w-5/12 text-left order-2 glass p-6 rounded-2xl w-full hover:border-purple-500/50 transition-colors">
+            <h3 class="text-xl font-bold text-white">Full-Stack & Game Dev</h3>
+            <p class="text-purple-400 text-sm font-semibold mb-2">Innovate Tech Labs</p>
+            <p class="text-textGray text-sm">Architected location-based social platforms with React Native. Developed 4
+              successful casual games using Flutter/Flame.</p>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="relative flex flex-col md:flex-row items-center justify-between group">
+          <div
+            class="md:w-5/12 text-left md:text-right order-2 md:order-1 glass p-6 rounded-2xl w-full hover:border-accent/50 transition-colors">
+            <h3 class="text-xl font-bold text-white">Database Systems Dev</h3>
+            <p class="text-accent text-sm font-semibold mb-2">Freelance</p>
+            <p class="text-textGray text-sm">Designed HIPAA-compliant clinic management systems using PostgreSQL and
+              secure backend protocols.</p>
+          </div>
+          <div
+            class="absolute left-0 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-bg border-4 border-accent rounded-full z-10 hidden md:block">
+          </div>
+          <div class="md:w-5/12 order-1 md:order-2 text-left pl-8 md:pl-0 mb-2 md:mb-0">
+            <span class="text-2xl font-black text-white/10 group-hover:text-accent/20 transition-colors">2018 -
+              2020</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section id="projects" class="py-24 reveal">
+      <h2 class="text-3xl md:text-5xl font-bold mb-12">Featured <span class="text-gradient">Works</span></h2>
+
+      <div class="grid md:grid-cols-2 gap-8">
+
+        <!-- Project 1 -->
+        <div
+          class="glass rounded-3xl overflow-hidden hover:transform hover:scale-[1.02] transition-all duration-500 group border-0 ring-1 ring-white/10 hover:ring-flutter/50">
+          <div
+            class="h-48 bg-gradient-to-br from-flutter/20 via-blue-900/20 to-bg flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-grid opacity-30"></div>
+            <i data-lucide="database"
+              class="w-16 h-16 text-flutter group-hover:scale-110 transition-transform duration-500"></i>
+          </div>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-flutter transition-colors">Enterprise Clinic
+              System</h3>
+            <p class="text-textGray mb-6 text-sm leading-relaxed">
+              Full-stack HIPAA-compliant database system focusing on role-based authentication and real-time sync for a
+              major dental clinic.
+            </p>
+            <div class="flex items-center gap-4 text-sm font-medium pt-4 border-t border-white/5">
+              <span class="flex items-center gap-1 text-flutter"><i data-lucide="layers" class="w-3 h-3"></i>
+                Flutter</span>
+              <span class="flex items-center gap-1 text-textGray"><i data-lucide="server" class="w-3 h-3"></i>
+                Node.js</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div
+          class="glass rounded-3xl overflow-hidden hover:transform hover:scale-[1.02] transition-all duration-500 group border-0 ring-1 ring-white/10 hover:ring-purple-400/50">
+          <div
+            class="h-48 bg-gradient-to-br from-purple-500/20 via-indigo-900/20 to-bg flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-grid opacity-30"></div>
+            <i data-lucide="users"
+              class="w-16 h-16 text-purple-400 group-hover:scale-110 transition-transform duration-500"></i>
+          </div>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">Church
+              Management Platform</h3>
+            <p class="text-textGray mb-6 text-sm leading-relaxed">
+              Complex Flutter Frontend Architecture for community management. Custom UI/UX state management integrated
+              with Next.js backend.
+            </p>
+            <div class="flex items-center gap-4 text-sm font-medium pt-4 border-t border-white/5">
+              <span class="flex items-center gap-1 text-purple-400"><i data-lucide="layers" class="w-3 h-3"></i>
+                Flutter</span>
+              <span class="flex items-center gap-1 text-textGray"><i data-lucide="code" class="w-3 h-3"></i>
+                Next.js</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div
+          class="glass rounded-3xl overflow-hidden hover:transform hover:scale-[1.02] transition-all duration-500 group border-0 ring-1 ring-white/10 hover:ring-blue-400/50">
+          <div
+            class="h-48 bg-gradient-to-br from-blue-500/20 via-slate-900/20 to-bg flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-grid opacity-30"></div>
+            <i data-lucide="shield-check"
+              class="w-16 h-16 text-blue-400 group-hover:scale-110 transition-transform duration-500"></i>
+          </div>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">Tena Smile Clinic
+            </h3>
+            <p class="text-textGray mb-6 text-sm leading-relaxed">
+              Secure patient management system providing a single source of truth for medical data. heavily focused on
+              security and compliance.
+            </p>
+            <div class="flex items-center gap-4 text-sm font-medium pt-4 border-t border-white/5">
+              <span class="flex items-center gap-1 text-blue-400"><i data-lucide="layers" class="w-3 h-3"></i>
+                Flutter</span>
+              <span class="flex items-center gap-1 text-textGray"><i data-lucide="database" class="w-3 h-3"></i>
+                PostgreSQL</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div
+          class="glass rounded-3xl overflow-hidden hover:transform hover:scale-[1.02] transition-all duration-500 group border-0 ring-1 ring-white/10 hover:ring-accent/50">
+          <div
+            class="h-48 bg-gradient-to-br from-accent/20 via-green-900/20 to-bg flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-grid opacity-30"></div>
+            <i data-lucide="stethoscope"
+              class="w-16 h-16 text-accent group-hover:scale-110 transition-transform duration-500"></i>
+          </div>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-accent transition-colors">Addis Hiwot
+              Hospital App</h3>
+            <p class="text-textGray mb-6 text-sm leading-relaxed">
+              Patient-facing portal for appointment booking and doctor search. Built with React Native for smooth
+              iOS/Android performance.
+            </p>
+            <div class="flex items-center gap-4 text-sm font-medium pt-4 border-t border-white/5">
+              <span class="flex items-center gap-1 text-accent"><i data-lucide="smartphone" class="w-3 h-3"></i> React
+                Native</span>
+              <span class="flex items-center gap-1 text-textGray"><i data-lucide="server" class="w-3 h-3"></i>
+                Node.js</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section id="contact" class="py-24 reveal">
+      <div class="relative glass rounded-3xl p-12 text-center overflow-hidden border border-flutter/30">
+        <!-- Background Glow -->
+        <div
+          class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-r from-flutter/20 to-accent/20 rounded-full blur-[100px] -z-10">
+        </div>
+
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to build something <br /> <span
+            class="text-gradient">extraordinary?</span></h2>
+        <p class="text-lg text-textGray max-w-2xl mx-auto mb-10">
+          I'm currently available for freelance projects and full-time opportunities. specialized in high-performance
+          Flutter applications.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <button onclick="copyEmail()"
+            class="group relative px-8 py-4 bg-white text-bg rounded-xl font-bold hover:shadow-[0_0_20px_rgba(255,255,255,0.4)] transition-all">
+            <span class="flex items-center gap-2">
+              <i data-lucide="mail" class="w-4 h-4"></i> hundefra@gmail.com
+            </span>
+            <div id="copy-toast"
+              class="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-surface text-white text-xs py-1 px-3 rounded border border-white/10 opacity-0 transition-opacity">
+              Copied!</div>
+          </button>
+
+          <a href="https://linkedin.com/in/hundefra-nassir" target="_blank"
+            class="px-8 py-4 bg-[#0A66C2] text-white rounded-xl font-bold hover:bg-[#004182] transition-colors flex items-center gap-2 shadow-lg">
+            <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
+          </a>
+        </div>
+
+        <div class="mt-8 flex items-center justify-center gap-2 text-textGray">
+          <i data-lucide="phone" class="w-4 h-4 text-accent"></i>
+          <span>+251 9 2552 6298</span>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <!-- Footer -->
-  <footer class="glass-card py-8 mt-16 border-t border-white/5">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <p class="text-text-muted font-medium">
-        © 2025 <span class="gradient-text font-bold">Hundefra Nassir</span>. Crafted with precision & passion.
-      </p>
-    </div>
+  <footer class="border-t border-white/5 py-8 text-center text-textGray text-sm">
+    <p>© 2025 <span class="text-white font-bold">Hundefra Nassir</span>. Professional Flutter Developer.</p>
   </footer>
+
+  <script>
+    // Initialize Icons
+    lucide.createIcons();
+
+    // Scroll Reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Copy Email
+    function copyEmail() {
+      navigator.clipboard.writeText('hundefra@gmail.com');
+      const toast = document.getElementById('copy-toast');
+      toast.style.opacity = '1';
+      setTimeout(() => toast.style.opacity = '0', 2000);
+    }
+
+    // Mobile Menu
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    function toggleMenu() {
+      mobileMenu.classList.toggle('hidden');
+    }
+
+    menuBtn.addEventListener('click', toggleMenu);
+
+    // Navbar Blur on Scroll
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        nav.classList.add('py-0');
+      } else {
+        nav.classList.remove('py-0');
+      }
+    });
+  </script>
 </body>
+
 </html>
